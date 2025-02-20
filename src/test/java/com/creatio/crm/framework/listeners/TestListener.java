@@ -32,6 +32,7 @@ public class TestListener extends Reports implements ITestListener {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		stopReporting();
 	}
 
 }

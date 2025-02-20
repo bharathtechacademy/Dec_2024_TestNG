@@ -14,7 +14,7 @@ public class CookiesPageSteps extends CookiesPageElements{
 	}
 	
 	public void verifyWhetherCookiesPopUpIsDisplayed() {
-		waitForElement(cookiesHeader, 5);
+		waitForElement(cookiesHeader, 30);
 		log("pass","Cookies pop-up is launched successfully");
 	}
 	

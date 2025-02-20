@@ -13,7 +13,7 @@ public class LoginPageSteps extends LoginPageElements{
 	}
 	
 	public void launchApplication() {		
-		launchApplication();
+		launchTheApplication();
 		Assert.assertEquals(getTitle(), prop.getProperty("title"));
 		log("pass","Application is launched successfully");
 	}

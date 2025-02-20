@@ -67,6 +67,12 @@ public class WebCommons {
 		textbox.clear();
 		textbox.sendKeys(textValue);
 	}
+	
+	// method to enter text in textbox using actions class
+	public void enterInfo(WebElement textbox, String textValue) {
+		scrollToElement(textbox);
+		new Actions(driver).sendKeys(textbox, textValue).perform();
+	}
 
 	// method to select checkbox
 	public void checkbox(WebElement checkbox, boolean status) {

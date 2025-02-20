@@ -17,8 +17,8 @@ public class HomePageSteps extends HomePageElements{
 	}
 	
 	public void verifySignUpIsSuccessful() {
-		waitForElement(homePageHeaderLink,30);
-		log("pass","Application Login is Successful");
+		waitForElement(homePageHeaderLink,10);
+		log("pass","Application Sign Up is Successful");
 	}
 
 

@@ -12,7 +12,7 @@ public class SignUpPageSteps extends SignUpPageElements{
 	}
 	
 	public void verifySignUpPageIsLaunched() {
-		waitForElement(signUpPageHeader, 5);
+		waitForElement(signUpPageHeader, 60);
 		log("pass","Application Signup page is launched successfully");
 	}
 	
@@ -40,7 +40,7 @@ public class SignUpPageSteps extends SignUpPageElements{
 		wait(5);
 		click(phoneTxtb);
 		wait(5);
-		enterText(phoneTxtb, "90"+uniqueId("ddMMhhmm"));
+		enterInfo(phoneTxtb, "90"+uniqueId("ddMMhhmm"));
 		log("info","Updated Company Details");
 	}
 	
