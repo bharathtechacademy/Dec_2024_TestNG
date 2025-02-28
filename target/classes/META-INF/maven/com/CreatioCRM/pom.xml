@@ -64,6 +64,21 @@
 			<version>3.0.0</version>
 		</dependency>
 
+		<!-- rest-assured for API testing-->
+		<dependency>
+			<groupId>io.rest-assured</groupId>
+			<artifactId>rest-assured</artifactId>
+			<version>5.4.0</version>
+		</dependency>
+
+		<!-- json dependency to prepare payload-->
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20250107</version>
+		</dependency>
+
+
 	</dependencies>
 
 	<build>
