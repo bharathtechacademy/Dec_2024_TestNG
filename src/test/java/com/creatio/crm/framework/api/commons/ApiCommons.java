@@ -14,7 +14,7 @@ import static io.restassured.RestAssured.given;
 
 public class ApiCommons extends Reports {
 
-	static Response response = null;
+	public static Response response = null;
 	public static Properties prop = PropUtil.readData("Config.properties");
 
 	// print message in report
@@ -36,12 +36,6 @@ public class ApiCommons extends Reports {
 		String token = prop.getProperty("api_token");
 		switch (requestType) {
 
-		case "GET":
-			response = given().headers("Authorization", token).when().get(endPoint);
-			break;
-		case "DELETE":
-			response = given().headers("Authorization", token).when().delete(endPoint);
-			break;
 		case "POST":
 			response = given().headers("Authorization", token).body(requestBody).when().post(endPoint);
 			break;
@@ -56,6 +50,24 @@ public class ApiCommons extends Reports {
 		}
 
 	}
+	
+	// Method to get the response and store response
+		public static void getResponse(String requestType, String endPoint) {
+			RestAssured.baseURI = prop.getProperty("api_base_url");
+			String token = prop.getProperty("api_token");
+			switch (requestType) {
+
+			case "GET":
+				response = given().headers("Authorization", token).when().get(endPoint);
+				break;
+			case "DELETE":
+				response = given().headers("Authorization", token).when().delete(endPoint);
+				break;
+			default:
+				Assert.fail("Invalid request Type : " + requestType);
+			}
+
+		}
 
 	// Verify status code
 	public static void verifyStatusCode(int expStatusCode) {
@@ -78,11 +90,28 @@ public class ApiCommons extends Reports {
 		log("pass", "Response Time is as expected , actual response time is " + actualResponseTime);
 	}
 	
-	//verify response body
+//	//verify response body
 	public static void verifyResponseBody(String key, String expValue) {
 		String actualValue = response.getBody().jsonPath().getString(key);
 		Assert.assertEquals(actualValue, expValue);
 		log("pass", "Response Body is as expected , actual response body value is " + actualValue + "for the Key "+key);
 	}
+	
+	//verify response is having specific key
+	public static void verifyResponseKey(String key) {
+		String actualKey = response.getBody().jsonPath().get(key);
+		Assert.assertNotNull(actualKey);
+		log("pass","Response Body is as expected ,"+key+" Key is Present  with in the response");
+	}
+
+	//verify response body
+	public static void verifyResponseHeaders(String key, String expValue) {
+		String actualValue = response.getHeader(key);
+		Assert.assertEquals(actualValue, expValue);
+		log("pass", "Response Headers are as expected , actual response header value is " + actualValue + "for the Key "+key);
+	}
+	
+
+	
 
 }
